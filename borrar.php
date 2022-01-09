@@ -14,4 +14,5 @@ if ($registro) {
     echo "</div>";
 }
 
-cerrarConexion();
+//Cerrramos conexiones.
+$conProyecto = null;

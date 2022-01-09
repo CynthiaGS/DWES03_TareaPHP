@@ -26,18 +26,19 @@
             if (!($resultado = $conProyecto->query($detalle))) {
                 die("Error al recuperar los productos" . $conProyecto->error);
             }
-            while ($detalleEncontrado = $resultado->fetch_assoc()) {
-                echo "<div class='card-header text-center'>{$detalleEncontrado['nombre']}</div>";
+            while ($detalleEncontrado = $resultado->fetch(PDO::FETCH_OBJ)) {
+                echo "<div class='card-header text-center'>{$detalleEncontrado->nombre}</div>";
                 echo "<div class='card-body'>";
                 echo "<h4  class='text-center'>Código: {$id}</h4>";
-                echo "<p class='card-text'>Nombre: {$detalleEncontrado['nombre']}</p>";
-                echo "<p class='card-text'>Nombre Corto: {$detalleEncontrado['nombre_corto']}</p>";
-                echo "<p class='card-text'>Código Familia: {$detalleEncontrado['familia']}</p>";
-                echo "<p class='card-text'>PVP (€): {$detalleEncontrado['pvp']}</p>";
-                echo "<p class='card-text'>Descripción: {$detalleEncontrado['descripcion']}</p>";
+                echo "<p class='card-text'>Nombre: {$detalleEncontrado->nombre}</p>";
+                echo "<p class='card-text'>Nombre Corto: {$detalleEncontrado->nombre_corto}</p>";
+                echo "<p class='card-text'>Código Familia: {$detalleEncontrado->familia}</p>";
+                echo "<p class='card-text'>PVP (€): {$detalleEncontrado->pvp}</p>";
+                echo "<p class='card-text'>Descripción: {$detalleEncontrado->descripcion}</p>";
                 echo "</div>";
             }
-            cerrarConexion();
+            //Cerrramos conexiones.
+            $conProyecto = null;
             ?>
 
         </div>

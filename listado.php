@@ -39,17 +39,18 @@
                 if (!($resultado = $conProyecto->query($listado))) {
                     die("Error al recuperar los productos" . $conProyecto->error);
                 }
-                while ($fila = $resultado->fetch_assoc()) {
+                while ($fila = $resultado->fetch(PDO::FETCH_OBJ)) {
                     echo "<tr>";
-                    echo "<td><a href='./detalle.php?id={$fila['id']}'><button class='btn btn-info text-white' type='button' name='detalle'>Detalle</button></a></td>";
-                    echo "<td>{$fila['id']}</td>";
-                    echo "<td>{$fila['nombre']}</td>";
-                    echo "<td><button class='btn btn-warning mr-1'>Actualizar</button><a href='./borrar.php?id={$fila['id']}'><button class='btn btn-danger'>Borrar</button></a></td>";
+                    echo "<td><a href='./detalle.php?id={$fila->id}'><button class='btn btn-info text-white' type='button' name='detalle'>Detalle</button></a></td>";
+                    echo "<td>{$fila->id}</td>";
+                    echo "<td>{$fila->nombre}</td>";
+                    echo "<td><button class='btn btn-warning mr-1'>Actualizar</button><a href='./borrar.php?id={$fila->id}'><button class='btn btn-danger'>Borrar</button></a></td>";
                     echo "</tr>";
                 }
-                cerrarConexion();
+                //Cerrramos conexiones.
+                $conProyecto = null;
                 ?>
-                
+
             </tbody>
         </table>
 
