@@ -1,0 +1,16 @@
+.bg-agua {
+    background-color: #80DEEA ;
+}
+
+.textoBorrado {
+    display: flex;
+    align-items: flex-end;
+}
+
+.botonVolverBorrado {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    background-color: white;
+    border-radius: 0.3rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
